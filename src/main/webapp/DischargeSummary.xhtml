@@ -1,0 +1,102 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <div class="p-grid">
+        <div class="p-col-12">
+            <div class="card">
+
+                <p:panel header="Select Patient">
+
+                    <h:form id="SelectPatientForm">
+
+                        <p:selectOneMenu value="#{dischargeSummaryView.selectedPatientCHINumber}">
+                            <f:selectItem itemLabel="Select Patient" itemValue=""/>
+                            <f:selectItems value="#{dischargeSummaryView.allPatientList}" var="patient" itemLabel="#{dischargeSummaryView.getPatientLabel(patient)}"
+                                           itemValue="#{patient.chinumber}" noSelectionValue="Please Choose"/>
+                        </p:selectOneMenu>
+
+                        <p:commandButton value="select" actionListener="#{dischargeSummaryView.selectPatient()}" style="vertical-align: top"
+                                         update="dischargeListPanel"/>
+                    </h:form>
+
+                </p:panel>
+
+
+                <p:panel id="dischargeListPanel" header="Discharge Summary">
+                    <h:form>
+
+
+
+
+                    <p:dataTable value="#{dischargeSummaryView.dischargeSummaryList}" var="dischargeSummary">
+
+
+                        <p:column headerText="Admission ID">
+
+                            <h:outputText value="#{dischargeSummary.admissionID}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="Admission Date">
+
+                            <h:outputText value="#{dischargeSummary.admissionDateTime}" converter="localDateTimeConverter"></h:outputText>
+                        </p:column>
+
+                        <p:column headerText="Discharge Date">
+
+                            <h:outputText value="#{dischargeSummary.estimatedDischargeDateTime}" converter="localDateTimeConverter"></h:outputText>
+                        </p:column>
+
+                        <p:column headerText="Specialty">
+
+                            <h:outputText value="#{dischargeSummary.admissionSpecialty}"></h:outputText>
+                        </p:column>
+
+                        <p:column headerText="Ward">
+
+                            <h:outputText value="#{dischargeSummary.admissionWard}"></h:outputText>
+                        </p:column>
+
+                        <p:column headerText="Location">
+
+                            <h:outputText value="#{dischargeSummary.admissionLocation}"></h:outputText>
+                        </p:column>
+
+                        <p:column headerText="Consultant">
+
+                            <h:outputText value="#{dischargeSummary.latestConsultant}"></h:outputText>
+                        </p:column>
+
+                        <p:column headerText="Diagnosis">
+
+                            <h:outputText value="#{dischargeSummary.diagnosis}"></h:outputText>
+                        </p:column>
+
+                        <p:column headerText="Status">
+
+                            <h:outputText value="#{dischargeSummary.docStatus}"></h:outputText>
+                        </p:column>
+
+                        <p:column headerText="Edit">
+
+                            <p:commandButton value="Edit" actionListener="#{dischargeSummaryView.editForm(dischargeSummary)}" ></p:commandButton>
+
+                        </p:column>
+
+
+
+                    </p:dataTable>
+                    </h:form>
+
+                </p:panel>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+</ui:composition>

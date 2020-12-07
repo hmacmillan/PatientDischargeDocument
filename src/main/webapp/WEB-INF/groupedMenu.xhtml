@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:pb="http://primefaces.org/babylon">
+    
+    
+    <pb:menu widgetVar="babylonMenuWidget" id="fullmenu">
+
+        <p:submenu id="om_homepage" label="Favorites" icon="pi pi-home">
+
+        <p:menuitem id="om_homepage_link" value="Home" icon="pi pi-home" actionListener="#{navigation.updateCurrentPage('homepage.xhtml')}" update="fullmenu"  />
+    </p:submenu>
+    <p:submenu id="om_components" label="Pages" icon="pi pi-star">
+        <p:menuitem id="om_testpage01" value="Discharge Summary" icon="pi pi-id-card" actionListener="#{navigation.updateCurrentPage('DischargeSummary.xhtml')}" update="fullmenu"/>
+        <p:menuitem id="om_testpage02" value="Test Page 2" icon="pi pi-comment" actionListener="#{navigation.updateCurrentPage('testpage02.xhtml')}" update="fullmenu"/>
+        <p:menuitem id="om_testpage03" value="Test Page 3" icon="pi pi-file" actionListener="#{navigation.updateCurrentPage('testpage03.xhtml')}" update="fullmenu"/>
+        <p:menuitem id="om_testpage04" value="Add Patient" icon="pi pi-chart-bar" actionListener="#{navigation.updateCurrentPage('addPatient.xhtml')}" update="fullmenu"/>
+
+
+    </p:submenu>
+
+
+        <p:submenu id="om_help" label="Help" icon="pi pi-star">
+            <p:menuitem id="om_documentation" value="Documentation" icon="pi pi-id-card" actionListener="#{navigation.updateCurrentPage('documentation.xhtml')}" update="fullmenu"/>
+
+
+        </p:submenu>
+
+    </pb:menu>
+    
+</ui:composition>
